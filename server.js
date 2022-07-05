@@ -34,6 +34,21 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
             })
             .catch(error => console.error(error))
         })
+        app.get('/api/cards', function (req, res) {
+            db.collection('cards').find().toArray()
+            .then(result => {
+                res.json(result)
+            })
+            .catch(error=> console.error(error))
+        })
+        app.get('/api/random-card', function (req, res) {
+            db.collection('cards').find().toArray()
+            .then(result => {
+                let rand = Math.floor(Math.random() * result.length);
+                let card = result[rand]
+                res.json(card)
+            })
+        })
 
         app.post('/edit-cards', (req, res) => {
             cards.insertOne(req.body)
@@ -58,7 +73,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
             .catch(error => console.error(error))
         })
         
-        
+
         app.listen(PORT, function () {
             console.log(`listening on ${PORT}`);
         })
