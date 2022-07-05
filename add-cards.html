@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Cards</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Add a Card</h1>
+    <form action="/add-cards" method="POST">
+        <fieldset>
+            <legend>Major Arcana</legend>
+            <label for="name">Card Name:</label>
+            <input type="text" placeholder="Card Name" name="name" autocomplete="off" required><br>
+            
+            <label for="number">Number:</label>
+            <input type="text" placeholder="Number" name="number" autocomplete="off" required><br>
+
+            <label for="image">Image Link</label>
+            <input type="text" placeholder="Image Link" name="image" autocomplete="off" required>
+        </fieldset>
+
+        <fieldset>
+            <legend>Upright</legend>
+            <label for="keywords-up">Keywords</label>
+            <input type="text" name="keywords-up" placeholder="Keywords">
+            <label for="description-up">Card Description</label>
+            <textarea rows="3" cols="60" placeholder="Description" name="description-up" autocomplete="off"
+                required></textarea><br>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Reversed</legend>
+            <label for="keywords-rev">Keywords</label>
+            <input type="text" name="keywords-rev" placeholder="Keywords">
+            <label for="description-rev">Card Description</label>
+            <textarea rows="3" cols="60" placeholder="Description" name="description-rev" autocomplete="off"
+                required></textarea><br>
+        </fieldset>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+</html>

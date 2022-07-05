@@ -1,0 +1,15 @@
+* {
+    background-color: bisque;
+}
+textarea {
+    display: block;
+}
+label {
+    display: block;
+}
+input, textarea, select {
+    background-color: rgb(251, 207, 154);
+}
+button {
+    margin-top: 5px;
+}
