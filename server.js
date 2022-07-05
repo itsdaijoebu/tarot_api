@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongodb = require('mongodb')
 const MongoClient = require('mongodb').MongoClient;
 require('dotenv').config();
 
@@ -26,25 +27,37 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         app.get('/', function (req, res) {
             res.sendFile(__dirname + '/index.html');
         })
-        app.get('/add-cards', function (req, res) {
+        app.get('/edit-cards', function (req, res) {
             db.collection('cards').find().toArray()
             .then(results => {
-                res.render('add-cards.ejs', {cards: results})
+                res.render('edit-cards.ejs', {cards: results})
             })
             .catch(error => console.error(error))
         })
 
-        app.post('/add-cards', (req, res) => {
+        app.post('/edit-cards', (req, res) => {
             cards.insertOne(req.body)
                 .then(result => {
-                    res.redirect('/add-cards')
+                    res.redirect('/edit-cards')
                 })
                 .catch(error => console.error(error));
         })
         
-        app.put('/add-cards', (req, res) => {
+        app.put('/edit-cards', (req, res) => {
             console.log(req.body)
         })
+
+        app.delete('/edit-cards', (req, res) => {
+            cards.deleteOne(
+                { _id: new mongodb.ObjectId(req.body._id) }
+            )
+            .then(result => {
+                console.log(`ObjectId("${req.body._id}")`)
+                res.json(`Deleted card id ${req.body._id}`)
+            })
+            .catch(error => console.error(error))
+        })
+        
         
         app.listen(PORT, function () {
             console.log(`listening on ${PORT}`);

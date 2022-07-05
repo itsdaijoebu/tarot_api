@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Cards</title>
+    <title>Edit Cards</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <h2>Add a Card</h2>
-    <form action="/add-cards" method="POST">
+    <form action="/edit-cards" method="POST">
         <fieldset>
             <legend>Major Arcana</legend>
             <label for="name">Card Name:</label>
@@ -94,6 +94,7 @@
             <p class="description">
                 <%= cards[i].descriptionRev %>
             </p>
+            <button type="submit" class="delete-button" id=<%=cards[i]._id%>>Delete</button>
         </section>
         <% } %>
 
