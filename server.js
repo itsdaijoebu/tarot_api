@@ -34,7 +34,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
             })
             .catch(error => console.error(error))
         })
-        app.get('/api/cards', function (req, res) {
+        app.get('/api', function (req, res) {
             db.collection('cards').find().toArray()
             .then(result => {
                 res.json(result)

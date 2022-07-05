@@ -32,7 +32,7 @@ Number.prototype.romanize = function () {
 let deck = {};
 newDeck();
 async function newDeck() {
-    const res = await fetch('api/cards');
+    const res = await fetch('api');
     deck = await res.json();
     console.log('deck', deck)
 }
