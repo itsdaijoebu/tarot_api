@@ -74,7 +74,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         })
         
 
-        app.listen(process.env.PORT, function () {
+        app.listen(process.env.PORT || PORT, function () {
             console.log(`listening...`);
         })
     })
