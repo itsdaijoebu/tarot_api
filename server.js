@@ -25,7 +25,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         const cards = db.collection('cards');
 
         app.get('/', function (req, res) {
-            res.sendFile(__dirname + '/index.html');
+            res.render('index.ejs', {});
         })
         app.get('/edit-cards', function (req, res) {
             db.collection('cards').find().toArray()
